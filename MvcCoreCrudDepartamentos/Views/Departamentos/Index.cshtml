@@ -9,6 +9,7 @@
             <th>Id Departamento</th>
             <th>Nombre</th>
             <th>Localidad</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,20 @@
                 <td>@departamento.IdDepartamento</td>
                 <td>@departamento.Nombre</td>
                 <td>@departamento.Localidad</td>
+                <td>
+                    <a asp-controller="Departamentos"
+                    asp-action="Edit"
+                    asp-route-id="@departamento.IdDepartamento"
+                    class="btn btn-primary">
+                    Edit
+                    </a>
+                    <a asp-controller="Departamentos"
+                    asp-action="Delete"
+                    asp-route-id="@departamento.IdDepartamento"
+                    class="btn btn-danger">
+                    Eliminar
+                    </a>
+                </td>
             </tr>
         }
     </tbody>

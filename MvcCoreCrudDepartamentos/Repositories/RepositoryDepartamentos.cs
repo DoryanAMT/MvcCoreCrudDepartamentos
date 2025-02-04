@@ -91,9 +91,22 @@ namespace MvcCoreCrudDepartamentos.Repositories
             this.com.Parameters.AddWithValue("@nombre", nombre);
             this.com.Parameters.AddWithValue("@localidad", localidad);
             this.com.Parameters.AddWithValue("@iddepartamento", idDepartamento);
+            this.com.CommandType = System.Data.CommandType.Text;
+            this.com.CommandText = sql;
             await this.cn.OpenAsync();
             await this.com.ExecuteNonQueryAsync();
             await this.cn.CloseAsync();
+            this.com.Parameters.Clear();
+        }
+        public async Task DeleteDepartamentoAsync
+            (int idDepartamento)
+        {
+            string sql = "delete from DEPT where DEPT_NO=@iddepartamento";
+            this.com.Parameters.AddWithValue("@iddepartamento", idDepartamento);
+            this.com.CommandType = System.Data.CommandType.Text;
+            this.com.CommandText = sql;
+            await this.cn.OpenAsync();
+            await this.com.ExecuteNonQueryAsync();
             this.com.Parameters.Clear();
         }
     }

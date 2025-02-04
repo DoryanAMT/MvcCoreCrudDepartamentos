@@ -28,5 +28,27 @@ namespace MvcCoreCrudDepartamentos.Controllers
             await this.repo.InsertDepartamentoAsync(nombre, localidad);
             return RedirectToAction("Index");
         }
+        //--------------- Encontrar departamento ------------------
+        public async Task<IActionResult> Edit
+            (int id)
+        {
+            Departamento departamento = await this.repo.FindDepartamentoAsync(id);
+            return View(departamento);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit
+            (Departamento departamento)
+        {
+            await this.repo.UpdateDepartamentoAsync
+                (departamento.IdDepartamento, departamento.Nombre,
+                departamento.Localidad);
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> Delete
+            (int id)
+        {
+            await this.repo.DeleteDepartamentoAsync(id);
+            return RedirectToAction("Index");
+        }
     }
 }
