@@ -1,0 +1,24 @@
+﻿@model List<Departamento>
+<h1>
+    Departamentos Index
+</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id Departamento</th>
+            <th>Nombre</th>
+            <th>Localidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Departamento departamento in Model)
+        {
+            <tr>
+                <td>@departamento.IdDepartamento</td>
+                <td>@departamento.Nombre</td>
+                <td>@departamento.Localidad</td>
+            </tr>
+        }
+    </tbody>
+</table>
